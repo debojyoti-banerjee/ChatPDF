@@ -1,5 +1,6 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from core.exceptions import PDFLoadError
 
 class PDFLoaderManager:
     def __init__(self,chunk_size=1000,chunk_overlap=200):
@@ -14,6 +15,6 @@ class PDFLoaderManager:
                 splitter=RecursiveCharacterTextSplitter(chunk_size=self.chunk_size,chunk_overlap=self.chunk_overlap)
                 split_docs=splitter.split_documents(data)
                 all_docs.append(split_docs)
-            except:
-                print("some error occured")
+            except Exception as e:
+                raise PDFLoadError(str(e), file_path=path)
         return all_docs
