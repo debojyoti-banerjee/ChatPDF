@@ -9,3 +9,8 @@ class PDFLoadError(ChatPDFError):
             message = f"[PDFLoadError] File: {file_path} | message: {message}"
         super().__init__(message)
         self.file_path = file_path
+
+
+class ChromaDBError(ChatPDFError):
+    def ___init__(self,message:str):
+        super().__init__(f"[ChromaDBError] : {message}")
