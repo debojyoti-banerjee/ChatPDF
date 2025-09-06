@@ -14,7 +14,7 @@ class PDFLoaderManager:
                 data=loader.load()
                 splitter=RecursiveCharacterTextSplitter(chunk_size=self.chunk_size,chunk_overlap=self.chunk_overlap)
                 split_docs=splitter.split_documents(data)
-                all_docs.append(split_docs)
+                all_docs.extend(split_docs)
             except Exception as e:
                 raise PDFLoadError(str(e), file_path=path)
         return all_docs
