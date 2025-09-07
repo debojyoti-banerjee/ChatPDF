@@ -2,6 +2,8 @@ from core.pdf_loader import PDFLoaderManager
 from core.exceptions import PDFLoadError
 from core.chroma_db import ChromaDBManager
 from core.exceptions import ChromaDBError
+from core.exceptions import ChatChainError
+from core.chat_chain import ChatBotManager
 
 loader=PDFLoaderManager()
 
@@ -11,11 +13,14 @@ try:
     chroma_mgr.build_database()
     chroma_mgr.add_documents(docs)
     retriever=chroma_mgr.get_retriever()
-    data=retriever.invoke("What is the range of hurst exponent for signal 1")
-    print(data)
+    chatbot=ChatBotManager(retriever)
+    print(chatbot.ask_question("what is hurst exponent"))
+    
 except PDFLoadError as e:
     print(e.message)
 except ChromaDBError as e:
+    print(e.message)
+except ChatChainError as e:
     print(e.message)
 except Exception as e:
     print(e)

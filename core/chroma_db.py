@@ -1,5 +1,5 @@
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEndpointEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from core.exceptions import ChromaDBError
 from dotenv import load_dotenv
 load_dotenv()
@@ -8,7 +8,7 @@ load_dotenv()
 class ChromaDBManager:
     def __init__(self,persist_dir="chromadb",collection_name="sample_1"):
         self.persist_dir=persist_dir
-        self.embedding_model=HuggingFaceEndpointEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+        self.embedding_model=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         self.db=None
         self.collection_name=collection_name
         

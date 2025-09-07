@@ -24,3 +24,5 @@ ddgs
 langchain-experimental
 pinecone
 langchain-pinecone
+sentence-transformers
+langchain-chroma
