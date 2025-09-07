@@ -14,3 +14,8 @@ class PDFLoadError(ChatPDFError):
 class ChromaDBError(ChatPDFError):
     def ___init__(self,message:str):
         super().__init__(f"[ChromaDBError] : {message}")
+
+
+class ChatChainError(ChatPDFError):
+    def __init__(self,message:str):
+        super().__init__(f"[ChatChainError] message: {message}")
