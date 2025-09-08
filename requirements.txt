@@ -26,3 +26,4 @@ pinecone
 langchain-pinecone
 sentence-transformers
 langchain-chroma
+streamlit
